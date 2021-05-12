@@ -1,0 +1,26 @@
+.header-container {
+  background-color: #e1cff1;
+  height: 5rem;
+  width: 100%;
+  margin: 0rem;
+  display: flex;
+  justify-content: start;
+}
+.list-item {
+  margin-top: 1.5rem;
+  margin-right: 1.2rem;
+  list-style: none;
+}
+.header-item {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.quill {
+  height: 12rem;
+  margin-bottom: 3rem;
+}
+.post-container {
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
