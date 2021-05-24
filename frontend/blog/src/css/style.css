@@ -1,20 +1,28 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
 .header-container {
-  background-color: #e1cff1;
-  height: 5rem;
+  background-color: rgb(223, 217, 217);
+  height: 4.5rem;
   width: 100%;
   margin: 0rem;
   display: flex;
-  justify-content: start;
+  justify-content: center;
 }
 .list-item {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   margin-right: 1.2rem;
   list-style: none;
+}
+.header-item:hover {
+  color: #7bada1;
 }
 .header-item {
   color: black;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .quill {
   height: 12rem;
@@ -23,4 +31,125 @@
 .post-container {
   margin-top: 1rem;
   margin-left: 3rem;
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-around;
+}
+.welcome-header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+}
+.illustrations-container {
+  position: relative;
+}
+.illustrations-container > img {
+  height: 20rem;
+  width: 20rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.overlay {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: white;
+}
+.illustrations-container:hover .overlay {
+  opacity: 1;
+}
+.text {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.overlay-text {
+  text-decoration: none;
+  color: #7bada1;
+}
+.overlay-text:hover {
+  color: #7bada1;
+}
+.logo {
+  width: 6rem;
+  height: 4.5rem;
+}
+.add-button {
+  background-color: #7bada1;
+  border-color: #7bada1;
+}
+.posts-header {
+  text-align: center;
+  margin-top: 2rem;
+  color: #7bada1;
+}
+.posts-list {
+  margin-top: 2rem;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.post {
+  padding-left: 1rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.3rem;
+}
+.post:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.close-x {
+  cursor: pointer;
+}
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+}
+.background-container > img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+.post-title {
+  font-size: 1.3rem;
+  background-color: #7bada16c;
+  padding: 2rem;
+  border-radius: 50%;
+}
+.post-main-container {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  background-color: #7bada1;
+  border-color: #7bada1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
 }

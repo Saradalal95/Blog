@@ -1,36 +1,73 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import ReactQuill from "react-quill";
-
-const AddPost = () => {
+import { Link } from "react-router-dom";
+const axios = require("axios").default;
+const AddPost = (props) => {
   const [body, setBody] = useState("");
   const handleBody = (e) => {
-    setBody(e);
+    inputRef.current.value = e;
   };
+
+  const inputTitleRef = useRef();
+  const inputRef = useRef();
+
+  const addPost = async (postTitle, postContent) => {
+    // TODO
+    try {
+      axios
+        .post("http://localhost:3002/posts/", {
+          title: postTitle,
+          content: postContent,
+        })
+        .then((response) => {
+          props.sendGetRequest({ body });
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addPostOnClick = async () => {
+    addPost(inputTitleRef.current.value, inputRef.current.value);
+    setBody("");
+  };
+
   return (
     <div>
+      <div className="background-container">
+        <img src="../img/image.jpg "/>
+      </div>
       <Form className="m-5">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Post title</Form.Label>
           <Form.Control
-            type="email"
+            ref={inputTitleRef}
             placeholder="add the title"
             className="mt-2 mb-5"
           />
         </Form.Group>
-        <div className="quill">
-          <ReactQuill
-            placeholder="write new post .."
-            modules={AddPost.modules}
-            formats={AddPost.formats}
-            onChange={handleBody}
-            value={body}
-          />
-        </div>
-
-        <Button variant="primary" type="submit">
-          Add
-        </Button>
+        <Form.Group>
+          <div className="quill">
+            <ReactQuill
+              ref={inputRef}
+              placeholder="write new post .."
+              modules={AddPost.modules}
+              formats={AddPost.formats}
+              onChange={handleBody}
+            />
+          </div>
+        </Form.Group>
+        <Link to="/mysite">
+          <Button
+            className="mt-3 add-button"
+            onClick={() => addPostOnClick()}
+            variant="primary"
+            type="submit"
+          >
+            Add
+          </Button>
+        </Link>
       </Form>
     </div>
   );

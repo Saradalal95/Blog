@@ -3,18 +3,26 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <ul className="header-container">
-      <li className="list-item">
-        <Link to="/" className="header-item">
-          My Site /
-        </Link>
-      </li>
-      <li className="list-item">
-        <Link to="/addpost" className="header-item">
-          New Post /
-        </Link>
-      </li>
-    </ul>
+  
+      <ul className="header-container">
+        <li className="list-item">
+          <Link to="/" className="header-item">
+            Home /
+          </Link>
+        </li>
+        <li className="list-item">
+          <Link to="/mysite" className="header-item">
+            My Site /
+          </Link>
+        </li>
+        <li className="list-item">
+          <Link to="/addpost" className="header-item">
+            New Post /
+          </Link>
+        </li>
+       
+      </ul>
+
   );
 };
 
