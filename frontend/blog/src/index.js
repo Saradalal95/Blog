@@ -34,7 +34,7 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/mysite">
+        <Route path="/mysite">
           <MySite show={post} sendGetRequest={sendGetRequest} />
         </Route>
         <Route path="/addpost">

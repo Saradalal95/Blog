@@ -46,7 +46,7 @@ const EditPost = (props) => {
     try {
       axios.post("http://localhost:3002/posts/update", data).then((res) => {
         props.sendGetRequest();
-        window.location.replace("/");
+        window.location.replace("/mysite");
       });
     } catch (error) {
       console.log(error);
@@ -82,15 +82,13 @@ const EditPost = (props) => {
             />
           </div>
         </Form.Group>
-        <Link to="/">
-          <Button
-            onClick={() => {
-              updateBlogs(id, title, content);
-            }}
-          >
-            Save
-          </Button>
-        </Link>
+        <Button
+          onClick={() => {
+            updateBlogs(id, title, content);
+          }}
+        >
+          Save
+        </Button>
       </Form>
     </div>
   );
