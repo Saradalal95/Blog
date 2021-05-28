@@ -15,6 +15,7 @@ const EditPost = (props) => {
     const foundPost = props.edit.find((post) => id === post.id);
     if (foundPost && id) {
       setTitle(foundPost.title);
+      setContent(foundPost.content);
     }
   }, []);
 

@@ -29,7 +29,7 @@ const MySite = (props) => {
         </p>
       ) : (
         props.show.map((post, index) => (
-          <ul className="posts-list">
+          <ul key={index} className="posts-list">
             <span
               className="close-x"
               onClick={() => {
@@ -39,7 +39,7 @@ const MySite = (props) => {
               x
             </span>
             <Link className="post" to={`/post/${post.id}`}>
-              <li key={index} className="post-title">{post.title}</li>
+              <li  className="post-title">{post.title}</li>
             </Link>
           </ul>
         ))
