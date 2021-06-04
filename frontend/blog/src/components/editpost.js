@@ -12,7 +12,7 @@ const EditPost = (props) => {
   const inputRef = useRef();
 
   useEffect(() => {
-    const foundPost = props.edit.find((post) => id === post.id);
+    const foundPost = props.edit.find((post) => id === post._id);
     if (foundPost && id) {
       setTitle(foundPost.title);
       setContent(foundPost.content);
@@ -24,7 +24,7 @@ const EditPost = (props) => {
   };
   const titleValue = (title) => {
     if (!title) {
-      const foundPost = props.edit.find((post) => post.id === id);
+      const foundPost = props.edit.find((post) => post._id === id);
       if (foundPost) {
         return foundPost.title;
       }
@@ -34,7 +34,7 @@ const EditPost = (props) => {
   };
   const quillValue = (quillContent) => {
     if (!quillContent) {
-      const foundPost = props.edit.find((post) => post.id === id);
+      const foundPost = props.edit.find((post) => post._id === id);
       if (foundPost) {
         return foundPost.content;
       }
@@ -42,10 +42,10 @@ const EditPost = (props) => {
       return quillContent;
     }
   };
-  const updateBlogs = async (id, title, content) => {
-    var data = { id, title, content };
+  const updateBlogs = async (title, content) => {
+    var data = { title, content };
     try {
-      axios.post("http://localhost:3002/posts/update", data).then((res) => {
+      axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
         props.sendGetRequest();
         window.location.replace("/mysite");
       });
@@ -85,7 +85,7 @@ const EditPost = (props) => {
         </Form.Group>
         <Button
           onClick={() => {
-            updateBlogs(id, title, content);
+            updateBlogs(title, content);
           }}
         >
           Save

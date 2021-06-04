@@ -16,7 +16,7 @@ const AddPost = (props) => {
     // TODO
     try {
       axios
-        .post("http://localhost:3002/posts/", {
+        .post("http://localhost:3001/posts/", {
           title: postTitle,
           content: postContent,
         })
@@ -36,7 +36,7 @@ const AddPost = (props) => {
   return (
     <div>
       <div className="background-container">
-        <img src="../img/image.jpg "/>
+        <img src="../img/image.jpg " />
       </div>
       <Form className="m-5">
         <Form.Group controlId="formBasicEmail">

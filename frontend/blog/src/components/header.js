@@ -12,12 +12,12 @@ const Header = () => {
         </li>
         <li className="list-item">
           <Link to="/mysite" className="header-item">
-            My Site /
+            MySite /
           </Link>
         </li>
         <li className="list-item">
           <Link to="/addpost" className="header-item">
-            New Post /
+            NewPost /
           </Link>
         </li>
        

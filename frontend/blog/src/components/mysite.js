@@ -6,7 +6,7 @@ const MySite = (props) => {
   const deletePostOnClick = async (id) => {
     try {
       axios
-        .delete("http://localhost:3002/posts/", {
+        .delete(`http://localhost:3001/posts/${id}`, {
           data: { id: id },
         })
         .then((response) => props.sendGetRequest());
@@ -33,13 +33,13 @@ const MySite = (props) => {
             <span
               className="close-x"
               onClick={() => {
-                deletePostOnClick(post.id);
+                deletePostOnClick(post._id);
               }}
             >
               x
             </span>
-            <Link className="post" to={`/post/${post.id}`}>
-              <li  className="post-title">{post.title}</li>
+            <Link className="post" to={`/post/${post._id}`}>
+              <li className="post-title">{post.title}</li>
             </Link>
           </ul>
         ))

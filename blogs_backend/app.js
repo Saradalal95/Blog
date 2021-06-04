@@ -2,21 +2,34 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
-const Lowdb = require("lowdb");
+
 const { setCors } = require("./middleware/security");
 var app = express();
-
 app.use(logger("dev"));
-const adapter = new FileSync("data/db.json");
-const db = low(adapter);
-db.defaults({
-  posts: [],
-}).write();
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.4z6q6.mongodb.net/blog?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  // we're connected!
+  console.log("Successfully connected to the database");
+});
+// const adapter = new FileSync("data/db.json");
+
+// db.defaults({
+//   posts: [],
+// }).write();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -25,11 +38,18 @@ app.use(setCors);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
-app.use((err, req, res, next) => {
-  res.status(500).send({
+app.use(function (req, res, next) {
+  const error = new Error("Looks like something broke...");
+  error.status = 400;
+  next(error);
+});
+
+app.use(function (err, req, res, next) {
+  res.send({
     error: {
       message: err.message,
     },
   });
 });
+// app.listen(3001, () => console.log("Running on http://localhost:3001"));
 module.exports = app;

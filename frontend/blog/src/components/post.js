@@ -5,11 +5,11 @@ const axios = require("axios").default;
 
 const Post = (props) => {
   const { id } = useParams();
-  const foundPost = props.showPost.find((post) => id === post.id);
+  const foundPost = props.showPost.find((post) => id === post._id);
   const deletePostOnClick = async (id) => {
     try {
       axios
-        .delete("http://localhost:3002/posts/", {
+        .delete(`http://localhost:3001/posts/${id}`, {
           data: { id: id },
         })
         .then((response) => props.sendGetRequest());
@@ -40,12 +40,12 @@ const Post = (props) => {
               className="button"
               href="/mysite"
               onClick={() => {
-                deletePostOnClick(foundPost.id);
+                deletePostOnClick(foundPost._id);
               }}
             >
               delete
             </Button>
-            <Button className="button" href={`/editpost/${foundPost.id}`}>
+            <Button className="button" href={`/editpost/${foundPost._id}`}>
               Edit
             </Button>
           </span>

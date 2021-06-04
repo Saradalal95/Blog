@@ -6,6 +6,7 @@ const {
   deletePost,
   updatePost,
 } = require("../controller/postsController");
-router.route("/").get(getPosts).post(addPost).delete(deletePost);
-router.route("/update").post(updatePost);
+router.route("/").get(getPosts).post(addPost);
+router.route("/:id").delete(deletePost).put(updatePost);
+// router.route("/update").post(updatePost);
 module.exports = router;

@@ -14,14 +14,14 @@ import Home from "./components/home";
 const axios = require("axios").default;
 const App = () => {
   const [post, setPosts] = useState([]);
-
+  console.log(post);
   useEffect(() => {
     sendGetRequest();
   }, []);
   const sendGetRequest = async () => {
     try {
       await axios
-        .get("http://localhost:3002/posts/")
+        .get("http://localhost:3001/posts/")
         .then((response) => setPosts(response.data));
     } catch (err) {
       console.error(err);
