@@ -14,7 +14,7 @@ const AddPost = (props) => {
   const inputRef = useRef();
   const addPost = async (postTitle, postContent) => {
     try {
-      const response = await axios.post("http://localhost:3001/posts/", {
+      const response = await axios.post("http://saras-blog.herokuapp.com/posts/", {
         title: postTitle,
         content: postContent,
       });

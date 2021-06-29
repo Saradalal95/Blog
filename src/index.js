@@ -21,7 +21,7 @@ const App = () => {
   const sendGetRequest = async () => {
     try {
       await axios
-        .get("http://localhost:3001/posts/")
+        .get("http://saras-blog.herokuapp.com/posts/")
         .then((response) => setPosts(response.data));
     } catch (err) {
       console.error(err);
@@ -46,7 +46,6 @@ const App = () => {
         <Route path="/editpost/:id">
           {post && <EditPost edit={post} sendGetRequest={sendGetRequest} />}
         </Route>
-  
       </Switch>
     </Router>
   );

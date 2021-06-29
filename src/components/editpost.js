@@ -35,7 +35,7 @@ const EditPost = (props) => {
   const updateBlogs = async (title, content) => {
     var data = { title, content };
     try {
-      axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
+      axios.put(`http://saras-blog.herokuapp.com/posts/${id}`, data).then((res) => {
         props.sendGetRequest();
         window.location.replace("/mysite");
       });
