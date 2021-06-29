@@ -6,11 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Switch from "react-bootstrap/esm/Switch";
 import MySite from "./components/mysite";
 import AddPost from "./components/addpost";
-import "./css/style.css";
 import "../node_modules/react-quill/dist/quill.snow.css";
 import Post from "./components/post";
 import EditPost from "./components/editpost";
 import Home from "./components/home";
+import "./css/style.css";
 const axios = require("axios").default;
 const App = () => {
   const [post, setPosts] = useState([]);
@@ -46,6 +46,7 @@ const App = () => {
         <Route path="/editpost/:id">
           {post && <EditPost edit={post} sendGetRequest={sendGetRequest} />}
         </Route>
+  
       </Switch>
     </Router>
   );

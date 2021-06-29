@@ -38,18 +38,21 @@ app.use(setCors);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
-app.use(function (req, res, next) {
-  const error = new Error("Looks like something broke...");
-  error.status = 400;
-  next(error);
-});
 
-app.use(function (err, req, res, next) {
-  res.send({
+// app.use(function (req, res, next) {
+//   const error = new Error("Looks like something broke...");
+//   error.status = 400;
+//   next(error);
+// });
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).send({
     error: {
       message: err.message,
     },
   });
 });
+
 // app.listen(3001, () => console.log("Running on http://localhost:3001"));
 module.exports = app;

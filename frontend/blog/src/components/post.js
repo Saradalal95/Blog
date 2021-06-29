@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 const axios = require("axios").default;
-
 const Post = (props) => {
   const { id } = useParams();
   const foundPost = props.showPost.find((post) => id === post._id);
@@ -32,6 +31,7 @@ const Post = (props) => {
               {foundPost.title}
             </Card.Title>
             <Card.Text
+            className="post-content"
               dangerouslySetInnerHTML={{ __html: foundPost.content }}
             ></Card.Text>
           </Card.Body>

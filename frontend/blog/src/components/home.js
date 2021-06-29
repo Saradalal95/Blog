@@ -5,10 +5,17 @@ const Home = () => {
   return (
     <>
       <h1 className="welcome-header">
-        Welcom to My Blog{" "}
+        Welcome to My Blog
         <img src="../img/logo.png" alt="logo" className="logo" />
       </h1>
 
+      <form style={{ textAlign: "center" }}>
+        <p>Enter your name : </p>
+        <input
+          type="text"
+          onChange={(event) => localStorage.setItem("user", event.target.value)}
+        ></input>
+      </form>
       <div className="home-container">
         <div className="illustrations-container">
           <img src="../img/02.png" />
@@ -31,6 +38,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <h6 className="footer">
+        Welcome to My Blog {localStorage.getItem("user")}
+      </h6>
     </>
   );
 };

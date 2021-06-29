@@ -7,9 +7,8 @@ const EditPost = (props) => {
   const { id } = useParams();
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
-
-  const inputTitleRef = useRef();
-  const inputRef = useRef();
+  // const inputTitleRef = useRef();
+  // const inputRef = useRef();
 
   useEffect(() => {
     const foundPost = props.edit.find((post) => id === post._id);
@@ -17,21 +16,12 @@ const EditPost = (props) => {
       setTitle(foundPost.title);
       setContent(foundPost.content);
     }
-  }, []);
+  }, [id, props.edit]);
 
   const handleBody = (data) => {
     setContent(data);
   };
-  const titleValue = (title) => {
-    if (!title) {
-      const foundPost = props.edit.find((post) => post._id === id);
-      if (foundPost) {
-        return foundPost.title;
-      }
-    } else {
-      return title;
-    }
-  };
+
   const quillValue = (quillContent) => {
     if (!quillContent) {
       const foundPost = props.edit.find((post) => post._id === id);
@@ -63,11 +53,10 @@ const EditPost = (props) => {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Post title</Form.Label>
           <Form.Control
-            value={titleValue(title)}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
-            ref={inputTitleRef}
             placeholder="add the title"
-            className="mt-2 mb-5"
+            className="mt-2 mb-5 title"
           />
         </Form.Group>
         <Form.Group>
@@ -75,7 +64,6 @@ const EditPost = (props) => {
             <ReactQuill
               value={quillValue(content)}
               onChange={handleBody}
-              ref={inputRef}
               placeholder="write new post .."
               modules={EditPost.modules}
               formats={EditPost.formats}

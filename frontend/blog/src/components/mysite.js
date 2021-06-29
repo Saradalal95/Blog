@@ -18,7 +18,7 @@ const MySite = (props) => {
   };
 
   return (
-    <div>
+    <div className="post-collection-container">
       <div className="background-container">
         <img src="../img/pencils-762555_1920.jpg" />
       </div>

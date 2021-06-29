@@ -5,7 +5,7 @@ exports.setCors = (req, res, next) => {
   // localhost:3000 can only send these headers with a request: Origin, x-Requested-With, Content-Type, Accept
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, x-Requested-With, Content-Type, Accept"
+    "Origin, x-Requested-With, Content-Type, Accept, auth"
   );
   // client can send only these methods: POST, GET, PUT, DELETE, OPTIONS
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
