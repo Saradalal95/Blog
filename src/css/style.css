@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 html,
 body {
-  height: 100%;
+  /* height: fit-content; */
+  display: flex;
+  flex-direction: column;
   margin: 0;
 }
 /* header navbar  */
@@ -19,13 +23,14 @@ body {
   color: #7bada1;
 }
 .header-item {
+  font-family: "Amatic SC", cursive;
   color: black;
   text-decoration: none;
-  font-size: 2.8vh;
-  letter-spacing: 0.5vw;
+  font-size: 2.2vw;
+  letter-spacing: 0.2vw;
 }
 .signInBtn {
-  width: 8vw;
+  width: 9vw;
   height: 6vh;
   margin-top: 1.5vh;
   background-color: black;
@@ -40,6 +45,16 @@ body {
   background-color: white;
   color: black;
 }
+.startNow-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.startBtn {
+  margin-top: 2vh;
+  margin-right: 2vh;
+  font-family: "Patrick Hand", cursive;
+}
 /* ----------------------------------- */
 /* home */
 
@@ -48,11 +63,11 @@ body {
   justify-content: space-around;
 }
 .welcome-header {
+  font-family: "Amatic SC", cursive;
+  font-size: 5vw;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
-
-  font-family: "Gloria Hallelujah", cursive;
 }
 .illustrations-container {
   position: relative;
@@ -81,7 +96,8 @@ body {
   opacity: 1;
 }
 .text {
-  font-size: 2rem;
+  font-family: "Amatic SC", cursive;
+  font-size: 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -121,11 +137,10 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  height: fit-content;
+  height: 100%;
 }
 .background-container > img {
   width: 100%;
-  height: 100%;
   opacity: 0.3;
 }
 
@@ -134,7 +149,6 @@ body {
   padding-left: 2vw;
   text-decoration: none;
   color: black;
-  font-size: 6.3vh;
 }
 .post:hover {
   text-decoration: none;
@@ -145,15 +159,18 @@ body {
   margin-bottom: 5vh;
 }
 .posts-header {
+  font-family: "Amatic SC", cursive;
+  font-size: 4vw;
+  font-weight: 700;
   text-align: center;
   margin-top: 2rem;
-  margin-left: 4vw;
   color: #7bada1;
 }
 .posts-list {
   margin-top: 2rem;
   list-style: none;
   text-align: center;
+  padding-left: 0;
   display: flex;
   justify-content: center;
 }
@@ -162,10 +179,12 @@ body {
 }
 
 .post-title {
+  font-family: "Patrick Hand", cursive;
   padding: 2vh;
-  font-size: 1.3rem;
-  border-style: dotted;
-  background-color: #ffffff;
+  font-size: 1.4rem;
+  background-color: transparent;
+  border-bottom: black solid 1px;
+  width: 30vw;
   /* border-radius: 50%; */
   text-align: center;
 }
@@ -191,42 +210,56 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-.footer {
-  height: 50vh;
-  text-align: center;
+/* Footer */
+footer {
+  font-family: "Amatic SC", cursive;
+  font-size: 2.5vw;
+  background-color: #dfd9d9;
+  margin-top: 25vh;
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.icons-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 15%;
 }
 
 /* responsiveness */
 
-@media (max-width: 575.98px) {
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-  }
+@media only screen and (max-device-width: 640px) {
   /* header navbar  */
+  .header-main-container {
+    height: 8.5vh;
+  }
   .header-container {
-    background-color: rgb(223, 217, 217);
-    height: 9.5vh;
-    width: 100%;
-    margin: 0vw;
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 5vw;
   }
   .list-item {
-    margin-top: 2.5vh;
-    margin-right: 2.2vh;
-    list-style: none;
-  }
-  .header-item:hover {
-    color: #7bada1;
+    margin-top: 2.2vh;
+    margin-right: 1.5vw;
   }
   .header-item {
-    color: black;
-    text-decoration: none;
-    font-size: 2.8vh;
-    letter-spacing: 0.5vw;
+    font-size: 2.4vh;
+    letter-spacing: 0vw;
   }
+  .signInBtn {
+    width: 23vw;
+    margin-top: 1vh;
+    margin-right: 1vw;
+  }
+  .startBtn {
+    margin-top: 1.5vh;
+    margin-right: 1vh;
+  }
+
   /* ----------------------------------- */
   /* home */
 
@@ -235,11 +268,38 @@ body {
     flex-direction: column;
   }
   .welcome-header {
-    margin-top: 1vh;
+    margin-top: 5vh;
     font-size: 4vh;
   }
+  .illustrations-container {
+    position: relative;
+  }
+  .illustrations-container > img {
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+  .overlay {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: white;
+  }
+  .illustrations-container:hover .overlay {
+    opacity: 1;
+  }
   .text {
-    font-size: 2rem;
+    font-family: "Amatic SC", cursive;
+    font-size: 3rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -248,16 +308,10 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
   }
-  .overlay-text {
-    text-decoration: none;
-    color: #7bada1;
-  }
-  .overlay-text:hover {
-    color: #7bada1;
-  }
+
   .logo {
-    width: 6rem;
-    height: 4.5rem;
+    width: 3rem;
+    height: 3rem;
   }
   /* --------------------------------------- */
 
@@ -286,27 +340,14 @@ body {
   /* my site */
 
   .posts-header {
-    text-align: center;
-    margin-top: 2rem;
-    color: #7bada1;
+    font-size: 8vw;
   }
   .posts-list {
-    margin-top: 2rem;
-    list-style: none;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    padding-left: 0;
   }
-  .close-x {
-    cursor: pointer;
-  }
-
   .post-title {
-    font-size: 1.3rem;
-    background-color: #7bada16c;
-    padding: 2rem;
-    border-radius: 50%;
-    margin-bottom: 2vh;
+    font-size: 1.4rem;
+    width: 50vw;
   }
   /* ------------------------------------ */
   /* post */
@@ -339,5 +380,11 @@ body {
   .button-container {
     display: flex;
     justify-content: space-evenly;
+  }
+}
+
+@media only screen and (min-device-width: 768px) {
+  footer {
+    margin-top: 38vh;
   }
 }

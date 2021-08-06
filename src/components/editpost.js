@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
+import baseUrl from "../baseurl";
 const axios = require("axios").default;
 const EditPost = (props) => {
   const { id } = useParams();
@@ -35,10 +36,16 @@ const EditPost = (props) => {
   const updateBlogs = async (title, content) => {
     var data = { title, content };
     try {
-      axios.put(`http://saras-blog.herokuapp.com/posts/${id}`, data).then((res) => {
-        props.sendGetRequest();
-        window.location.replace("/mysite");
-      });
+      axios
+        .put(baseUrl + `/posts/${id}`, data, {
+          headers: {
+            auth: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          props.sendGetRequest();
+          window.location.replace("/mysite");
+        });
     } catch (error) {
       console.log(error);
     }
@@ -46,9 +53,9 @@ const EditPost = (props) => {
   };
   return (
     <div>
-      <div className="background-container">
+      {/* <div className="background-container">
         <img src="../img/image.jpg " />
-      </div>
+      </div> */}
       <Form className="m-5">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Post title</Form.Label>

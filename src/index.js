@@ -3,25 +3,28 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/header";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/style.css";
 import Switch from "react-bootstrap/esm/Switch";
 import MySite from "./components/mysite";
 import AddPost from "./components/addpost";
 import "../node_modules/react-quill/dist/quill.snow.css";
 import Post from "./components/post";
+
 import EditPost from "./components/editpost";
 import Home from "./components/home";
-import "./css/style.css";
+import Footer from "./components/footer";
+import baseUrl from "./baseurl";
 const axios = require("axios").default;
 const App = () => {
-  const [post, setPosts] = useState([]);
-  console.log(post);
+  const [posts, setPosts] = useState([]);
+  console.log(posts);
   useEffect(() => {
     sendGetRequest();
   }, []);
   const sendGetRequest = async () => {
     try {
       await axios
-        .get("http://saras-blog.herokuapp.com/posts/")
+        .get(baseUrl + "/posts")
         .then((response) => setPosts(response.data));
     } catch (err) {
       console.error(err);
@@ -35,18 +38,19 @@ const App = () => {
           <Home />
         </Route>
         <Route path="/mysite">
-          <MySite show={post} sendGetRequest={sendGetRequest} />
+          <MySite show={posts} sendGetRequest={sendGetRequest} />
         </Route>
         <Route path="/addpost">
           <AddPost sendGetRequest={sendGetRequest} />
         </Route>
         <Route path="/post/:id">
-          <Post showPost={post} sendGetRequest={sendGetRequest} />
+          <Post showPost={posts} sendGetRequest={sendGetRequest} />
         </Route>
         <Route path="/editpost/:id">
-          {post && <EditPost edit={post} sendGetRequest={sendGetRequest} />}
+          {posts && <EditPost edit={posts} sendGetRequest={sendGetRequest} />}
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 };

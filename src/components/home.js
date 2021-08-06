@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <>
+    <div>
       <h1 className="welcome-header">
         Welcome to My Blog
         <img src="../img/logo.png" alt="logo" className="logo" />
       </h1>
-
+      {/* 
       <form style={{ textAlign: "center" }}>
         <p>Enter your name : </p>
         <input
           type="text"
-          onChange={(event) => localStorage.setItem("user", event.target.value)}
+          onChange={(event) => localStorage.setItem("user.name", event.target.value)}
         ></input>
-      </form>
+      </form> */}
       <div className="home-container">
         <div className="illustrations-container">
           <img src="../img/02.png" />
@@ -38,10 +38,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <h6 className="footer">
-        Welcome to My Blog {localStorage.getItem("user")}
-      </h6>
-    </>
+      {/* <h6 className="footer">
+        Welcome to My Blog {localStorage.getItem("user.name")}
+      </h6> */}
+    
+    </div>
   );
 };
 
