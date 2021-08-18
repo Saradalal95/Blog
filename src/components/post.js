@@ -49,8 +49,8 @@ const Post = (props) => {
   };
   return (
     <div className="post-main-container ">
-      <div className="background-container">
-        <img src="../img/pencils-762555_1920.jpg" />
+      <div className="background-mysite">
+        {/* <img src="../img/bg.jpg" /> */}
       </div>
       {foundPost ? (
         <Card style={{ width: "35rem" }} className="p-4">

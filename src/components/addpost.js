@@ -79,9 +79,9 @@ const AddPost = (props) => {
           </ul>
         </div>
       )}
-      {/* <div className="background-container">
-        <img src="../img/image.jpg " />
-      </div> */}
+      <div className="background-post">
+        {/* <img src="../img/image.jpg " /> */}
+      </div>
 
       <Form className="m-5">
         <Form.Group controlId="formBasicEmail">

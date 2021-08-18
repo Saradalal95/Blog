@@ -28,11 +28,8 @@ const MySite = (props) => {
 
   return (
     <div className="post-collection-container">
-      {/* <div
-        className="background-container"
-      >
-        <img src="../img/pencils-762555_1920.jpg" />
-      </div> */}
+      <div className="background-mysite">
+      </div>
       <h2 className="posts-header">posts Collection</h2>
       {props.show.length < 1 ? (
         <p style={{ textAlign: "center", fontSize: "1.3rem" }}>
